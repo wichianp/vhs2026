@@ -1,5 +1,5 @@
     /* ============ START CONFIG ============ */
-    const GAS_KEY = 'AKfycbwAfDMv8iRWo4gD2mC9whGmVggSUzzjgyEMubXOIiN7zi-OIiC5djCyQE38soL7tSCMyg';
+    const GAS_KEY = 'AKfycby8ZyalNFSSrVUfndvhwvyCkmj7Vlo86SfouqRmdc7rGULp2rlbZjY9bZzaqrkuvxUt';
     
     let schoolname = ''; 
     let department = '';
