@@ -6,7 +6,7 @@
     let academicYear = '';
     let semester = 0;
     let CONFIG = {};
-
+    const RECORDS_ID = [];
     window.onload = async () => {
       const url = getGasUrl();
       const res = await fetch(
@@ -833,6 +833,7 @@
       tb.innerHTML = '';
       if (!rows || rows.length === 0) { tb.innerHTML = '<tr><td colspan="7" class="text-center text-muted py-3">ยังไม่มีรายการ</td></tr>'; return; }
       rows.forEach((r, i) => {
+        RECORDS_ID.push(r.studentId);
         const tr = document.createElement('tr');
         tr.innerHTML = `<td>${i + 1}</td><td>${r.studentId || '-'}</td><td>${(r.prefix || '') + ' ' + (r.studentFirstName || '') + ' ' + (r.studentLastName || '')}</td><td>${r.school || '-'}</td><td>${r.semester || '-'}/${r.academicYear || '-'}</td><td style="font-size:.76rem">${formatThaiDate(r.timestamp) || '-'}</td>
     <td class="text-center d-flex gap-1 justify-content-center">
@@ -1510,5 +1511,14 @@
     function toggleHouse(show){
       const boxh = document.getElementById('subh2')
       boxh.style.display = show ? 'block' : 'none';
+    }
+    
+    async function checkStdId(){
+      const stdId = document.getElementById('f_studentId').value.trim();
+      const record = await RECORDS_ID.find(id => id === stdId);
+        if(record) {
+          toast('เลขประจำตัวนักเรียนนี้มีอยู่แล้วในระบบ', 'warning');
+          document.getElementById('f_studentId').value = '';
+        }
     }
 
