@@ -828,7 +828,6 @@
 
    /* ===== LOAD ONE RECORD ===== */
     function renderRecords(rows) {
-      console.log('Rendering records:', rows);
       const tb = document.getElementById('recBody');
       tb.innerHTML = '';
       if (!rows || rows.length === 0) { tb.innerHTML = '<tr><td colspan="7" class="text-center text-muted py-3">ยังไม่มีรายการ</td></tr>'; return; }
